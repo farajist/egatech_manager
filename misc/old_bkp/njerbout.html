@@ -1,0 +1,30 @@
+ <?php
+$myfile = fopen("test.html", "w") or die("Unable to open file!");
+$txt = '<html>
+<head>
+<title> Login </title>\n
+<link rel="stylesheet" type="text/css" href="logstyledoc.css">\n
+<link rel="icon" href="http://egatech.ma/wp-content/uploads/2017/01/cropped-E-32x32.png" sizes="32x32" />\n
+<link rel="icon" href="http://egatech.ma/wp-content/uploads/2017/01/cropped-E-192x192.png" sizes="192x192" />\n
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>\n
+<script  type="text/javascript" src="script.js"></script>\n
+</head> \n
+<body>\n
+<ul class="live-search-list">\n
+<a class="logo" href="http://egatech.ma/" target="_blank"> <img width="355" height="90" src="Egatech-LOGO-site-slogan-.jpg" class="header_logo header-logo" alt="Egatech"/></a>\n
+<input type="text" class="live-search-box" placeholder="Rechercher un client" />\n
+<?php $servername = "127.0.0.1";\n
+$username = "root";\n
+$password = "";\n
+$dbname = "clients";\n
+$conn = mysqli_connect($servername, $username, $password, $dbname);\n
+$query = "SELECT `id_client`, `nom_clt` FROM `client`";\n
+$result = mysqli_query($conn, $query);\n
+while($row = mysqli_fetch_assoc($result)){\n
+echo "<li><a href="#" id="link"><b>" .$row["id_client"]."- ".$row["nom_clt"]."</b></a></li>";}?><br>\n
+<form action="add.html" target="_blank" >\n
+<button class="addclt" action="add.html" ><strong><b>+ </b> Ajouter un nouveau client</strong></button></form>\n
+</ul>';
+fwrite($myfile, $txt);
+fclose($myfile);
+?> 

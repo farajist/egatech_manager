@@ -1,0 +1,40 @@
+<html>
+<head>
+<title> Login </title>
+<link rel="stylesheet" type="text/css" href="logstyledoc.css">
+<link rel="icon" href="http://egatech.ma/wp-content/uploads/2017/01/cropped-E-32x32.png" sizes="32x32" />
+<link rel="icon" href="http://egatech.ma/wp-content/uploads/2017/01/cropped-E-192x192.png" sizes="192x192" />
+<script jQuery(document).ready(function($){
+
+$('.live-search-list li').each(function(){
+$(this).attr('data-search-term', $(this).text().toLowerCase());
+});
+
+$('.live-search-box').on('keyup', function(){
+
+var searchTerm = $(this).val().toLowerCase();
+
+    $('.live-search-list li').each(function(){
+
+        if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+
+    });
+
+});
+
+});</script>
+</head> 
+<body>
+<ul class="live-search-list">
+<input type="text" class="live-search-box" placeholder="search here" />
+<li>anas</li>
+<li>megas</li>
+<li>baghdadi</li>
+<li>123lol</li>
+</ul>
+</body>
+</html>
